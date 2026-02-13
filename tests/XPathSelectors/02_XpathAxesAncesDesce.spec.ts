@@ -15,8 +15,9 @@ await page.waitForTimeout(500);
 await page.locator("//label[text()='Recharge Amount']/ancestor::div[@class='field-section']/descendant::input").fill("500");
 await page.waitForTimeout(500);
 
-await page.locator("//button[text()='Recharge Now']").click();
+await page.locator("//button[text()='Recharge Now']/ancestor::div[@class='field-section']/descendant::button[1]").click();
 await page.waitForTimeout(500);
 
-
+let text=await page.locator("//div[@class='success']").textContent();
+await expect(text).toContain("Recharge completed successfully!")
 })
